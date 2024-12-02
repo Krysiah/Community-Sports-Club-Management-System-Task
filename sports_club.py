@@ -16,20 +16,24 @@ class Member(Person):
     def __init__(self, name, age, contact_number):
         super().__init__(name, age, contact_number)
 
-    def set_membership_details(self, membership_id, sport, performace_scores):
+    def set_membership_details(self, membership_id, sport,performace_scores):
         self.membership_id = membership_id
         self.sport = sport
         self.performance_scores = []
 
-    def add_performance_score(self):
-        print("somehting")
+    def add_performance_score(self,performace_scores):
+        self.performance_scores.append(performace_scores)
         
     
     def calculate_avg_score(self):
-        if self.score != 0:
-            score_total = [self.score]
-            score_avg = sum(score_total) / len(score_total)
-            return score_avg
+        if self.performance_scores != []:
+            total = sum(self.performance_scores)
+            num_of_grades = len(self.performance_scores)
+            average = total / num_of_grades
+            return average
+        else:
+            return 0
+
         
     def get_member_summary(self):
         print("Membership ID:",self.membership_id,"¦Sport:",self.sport,"¦Average Performance Score:",self.calculate_avg_score())
@@ -47,6 +51,6 @@ tst_1.add_performance_score(96)
 tst_1.add_performance_score(12)
 tst_1.add_performance_score(45)
 
-tst_1.calculate_avg_score()
+tst_1.get_member_summary()
 
 
